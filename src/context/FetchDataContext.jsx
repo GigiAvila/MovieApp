@@ -19,7 +19,9 @@ export const FetchDataProvider = ({ children }) => {
     try {
       setLoading(true)
 
-      const response = await fetch('http://localhost:4001/api/movies')
+      const response = await fetch(
+        'https://movie-app-backend-eight.vercel.app/api/movies'
+      )
       const result = await response.json()
       setFetchData(result)
     } catch (error) {
@@ -48,10 +50,13 @@ export const FetchDataProvider = ({ children }) => {
         formData.append('preview', previewInput.files[0])
       }
 
-      const response = await fetch('http://localhost:4001/api/movies', {
-        method: 'POST',
-        body: formData
-      })
+      const response = await fetch(
+        'https://movie-app-backend-eight.vercel.app/api/movies',
+        {
+          method: 'POST',
+          body: formData
+        }
+      )
 
       const result = await response.json()
       console.log('POST response:', result)
@@ -79,10 +84,13 @@ export const FetchDataProvider = ({ children }) => {
         formData.append('preview', previewInput.files[0])
       }
 
-      const response = await fetch(`http://localhost:4001/api/movies/${id}`, {
-        method: 'PUT',
-        body: formData
-      })
+      const response = await fetch(
+        `https://movie-app-backend-eight.vercel.app/api/movies/${id}`,
+        {
+          method: 'PUT',
+          body: formData
+        }
+      )
 
       const result = await response.json()
       console.log('PUT response:', result)
@@ -95,9 +103,12 @@ export const FetchDataProvider = ({ children }) => {
 
   const deleteMovie = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4001/api/movies/${id}`, {
-        method: 'DELETE'
-      })
+      const response = await fetch(
+        `https://movie-app-backend-eight.vercel.app/api/movies/${id}`,
+        {
+          method: 'DELETE'
+        }
+      )
 
       const result = await response.json()
       console.log('DELETE response:', result)
